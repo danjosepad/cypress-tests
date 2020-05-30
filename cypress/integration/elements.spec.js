@@ -46,10 +46,15 @@ describe('Work with basic elements', () => {
   })
 
   it('Radio Buttons', () => {
-    cy.get('#formSexoFem')
-      .click()
-      .should('be.checked')
-
+    cy.get('#formSexoFem').click().should('be.checked')
     cy.get('#formSexoMasc').should('not.be.checked')
+
+    //Como são agrupos, usa-se baseado no name, que gerencia os radio buttons
+    cy.get("[name='formSexo']").should('have.length', 2)
+  })
+
+  it('Checkbox', () => {
+    cy.get('#formComidaPizza').click().should('be.checked')
+    cy.get("[name='formComidaFavorita']").click({ multiple: true }).should('be.checked')
   })
 })
