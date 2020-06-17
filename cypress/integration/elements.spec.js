@@ -57,4 +57,15 @@ describe('Work with basic elements', () => {
     cy.get('#formComidaPizza').click().should('be.checked')
     cy.get("[name='formComidaFavorita']").click({ multiple: true }).should('be.checked')
   })
+
+  it('Combo', () => {
+    cy.get('[data-test=dataEscolaridade]')
+      .select('1graucomp')
+      .should('have.value', '1graucomp')
+  })
+
+  it('Multiple Combo', () => {
+    cy.get('[data-testid=dataEsportes]')
+      .select(['natacao', 'Corrida'])
+  })
 })
